@@ -10,7 +10,7 @@ import org.junit.Test;
 public class EmailTest {
 	@Test
 	public void deberiaSetearUnUsuario() throws Exception {
-		Email prueba = new Email("Usuario", null);
+		Email prueba = new Email("Usuario", null, "@");
 
 		assertThat(prueba.getUsuario(), equalTo("Usuario"));
 
@@ -18,15 +18,15 @@ public class EmailTest {
 
 	@Test
 	public void deberiaSetearUnDominio() throws Exception {
-		Email prueba = new Email(null, "Dominio");
+		Email prueba = new Email(null, "Dominio", "@");
 		assertThat(prueba.getDominio(), equalTo("Dominio"));
 
 	}
 
 	@Test
 	public void deberiaSerIguales() throws Exception {
-		Email emailA = new Email("usuarioA", "dominioA");
-		Email emailB = new Email("usuarioA", "dominioA");
+		Email emailA = new Email("usuarioA", "dominioA", "@");
+		Email emailB = new Email("usuarioA", "dominioA", "@");
 		assertThat(emailA, is(emailB));
 
 	}

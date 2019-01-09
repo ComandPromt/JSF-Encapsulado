@@ -1,5 +1,7 @@
 package com.mkyong;
 
+import java.util.Map;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -20,11 +22,18 @@ public class EmailValidator implements Validator {
 		if (valor == null) {
 			return;
 		}
-
+		String separador = getValorAtributo(arg1);
+		patron = patron.replace("@", separador);
 		if (!valor.matches(patron)) {
 			throw new ValidatorException(new FacesMessage("El email no es correcto"));
 		}
 
+	}
+
+	protected String getValorAtributo(UIComponent component) {
+		Map<String, Object> attributes = component.getAttributes();
+		String separador = (String) attributes.get("separador");
+		return separador;
 	}
 
 	public void setPatron(String patron) {

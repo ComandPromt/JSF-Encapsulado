@@ -20,7 +20,7 @@ public class EmailConverter implements Converter {
 		String separador = getValorAtributo(component);
 		String[] aux = value.split(separador);
 		if (aux.length == 2) {
-			return new Email(aux[0], aux[1]);
+			return new Email(aux[0], aux[1], separador);
 		}
 
 		throw new ConverterException(new FacesMessage("\nNo contiene usuario" + separador + "dominio"));

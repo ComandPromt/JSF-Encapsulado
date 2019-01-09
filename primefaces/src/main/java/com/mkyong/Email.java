@@ -6,10 +6,11 @@ import lombok.Data;
 public class Email {
 	private final String usuario;
 	private final String dominio;
+	private final String separador;
 
 	@Override
 	public String toString() {
-		return usuario + "@" + dominio;
+		return usuario + separador + dominio;
 	}
 
 }

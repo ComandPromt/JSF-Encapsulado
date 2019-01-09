@@ -60,7 +60,7 @@ public class EmailConverterTest {
 
 	@Test
 	public void dadoUnEmailDevuelveCadena() throws Exception {
-		Email email = new Email("usuario", "dominio");
+		Email email = new Email("usuario", "dominio", "@");
 		String comprobar = conversorSpy.getAsString(null, null, email);
 		assertThat(comprobar, is("usuario@dominio"));
 	}
