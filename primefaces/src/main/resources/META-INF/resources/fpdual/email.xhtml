@@ -1,4 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -6,17 +8,22 @@
 	xmlns:x="http://fpdual.es/validador">
 <composite:interface displayName="Componente para email">
 	<composite:attribute name="patron" type="java.lang.String"
-		required="true" />
+		default="\S+@\S+\.\S+$"/>
 	<composite:attribute name="etiqueta" type="java.lang.String"
 		required="true" />
+		<composite:attribute name="value"></composite:attribute>
+		<composite:attribute name="separador" type="java.lang.String"
+		default="@"/>
 </composite:interface>
 <composite:implementation>
-	
-		
-		<h:inputText id="passwordInput" label="#{cc.attrs.etiqueta}">
 
-			<x:validadorEmail patron="#{cc.attrs.patron}"></x:validadorEmail>
-		</h:inputText>
+<h:inputText id="passwordInput" label="#{cc.attrs.etiqueta}" value="#{cc.attrs.value}"> 
+		<f:converter converterId = "com.mkyong.EmailConverter" />
+		<f:attribute name="separador" value="#{cc.attrs.separador}"/>
+		<x:validadorEmail patron="#{cc.attrs.patron}"></x:validadorEmail>
+	</h:inputText>
+			
+		
 <h:message for="passwordInput" style = "color:red" /> 
 <br/><br/>
 </composite:implementation>
