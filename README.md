@@ -1,2 +1,2 @@
 # JSF-Encapsulado
-- Validador de JSF
+- Validador y conversor de email
